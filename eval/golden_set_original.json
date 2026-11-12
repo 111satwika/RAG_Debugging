@@ -1,0 +1,504 @@
+[
+  {
+    "id": "q01",
+    "question": "What is the candidate's current job title and company?",
+    "expected_answer": "Associate Consultant at Cprime Inc, India (full-time since August 2025). She joined in January 2025 as a Trainee Engineering Consultant (apprenticeship, Jan–Jul 2025).",
+    "must_include": ["Associate Consultant", "Cprime"],
+    "source_docs": ["Satwika_Agentic_AI_Engineer_Resume.pdf"],
+    "source_section": "Experience",
+    "type": "factual"
+  },
+  {
+    "id": "q02",
+    "question": "How much manual effort did the AI Visual Placemat platform save?",
+    "expected_answer": "It cut manual effort by 50%, reducing a six-hour client workflow to three hours.",
+    "must_include": ["50%", "6", "3"],
+    "source_docs": ["Satwika_Agentic_AI_Engineer_Resume.pdf"],
+    "source_section": "Experience > AI Visual Placemat",
+    "type": "factual"
+  },
+  {
+    "id": "q03",
+    "question": "What MRR@10 did hybrid retrieval reach in IntelliFusion, and on how many queries?",
+    "expected_answer": "Hybrid retrieval reached MRR@10 of 0.831 on a labelled 37-query set.",
+    "must_include": ["0.831", "37"],
+    "source_docs": ["Satwika_Agentic_AI_Engineer_Resume.pdf"],
+    "source_section": "Projects > IntelliFusion",
+    "type": "exact_term"
+  },
+  {
+    "id": "q04",
+    "question": "In ReleaseForge AI, what changed when the grader was fixed?",
+    "expected_answer": "Fixing the keyword grader alone moved measured recall from 68% to 95% with no model change. An automatic LLM-judge fallback was added so future grading gaps are caught.",
+    "must_include": ["68%", "95%"],
+    "source_docs": ["Satwika_Agentic_AI_Engineer_Resume.pdf"],
+    "source_section": "Projects > ReleaseForge AI",
+    "type": "factual"
+  },
+  {
+    "id": "q05",
+    "question": "Which of the candidate's projects use Model Context Protocol (MCP), and how many tool servers does each have?",
+    "expected_answer": "ReleaseForge AI uses 5 MCP servers exposing 30 tools. DevPilot AI uses 6 MCP tool servers.",
+    "must_include": ["ReleaseForge", "5", "30", "DevPilot", "6"],
+    "source_docs": ["Satwika_Agentic_AI_Engineer_Resume.pdf"],
+    "source_section": "Projects > ReleaseForge AI; Projects > DevPilot AI",
+    "type": "multi_section"
+  },
+  {
+    "id": "q06",
+    "question": "What model was fine-tuned in DevPilot AI, and what tool-selection accuracy did it reach compared to the base model?",
+    "expected_answer": "Qwen2.5-Coder-1.5B was fine-tuned with QLoRA. It reached 66.7% tool-selection accuracy vs 59.3% for the base model, on a 27-example held-out set.",
+    "must_include": ["Qwen2.5-Coder-1.5B", "66.7%", "59.3%"],
+    "source_docs": ["Satwika_Agentic_AI_Engineer_Resume.pdf"],
+    "source_section": "Projects > DevPilot AI",
+    "type": "exact_term"
+  },
+  {
+    "id": "q07",
+    "question": "Where did the candidate study, and what was her CGPA?",
+    "expected_answer": "B.Tech in Computer Science and Engineering at SASTRA Deemed University (2021–2025), with a CGPA of 9.13.",
+    "must_include": ["SASTRA", "9.13"],
+    "source_docs": ["Satwika_Agentic_AI_Engineer_Resume.pdf"],
+    "source_section": "Education",
+    "type": "factual"
+  },
+  {
+    "id": "q08",
+    "question": "How many days of Earned Leave does an employee get per year in QuickLeave, and can it be carried forward?",
+    "expected_answer": "18 days per year. Earned Leave can be carried forward up to 30 days. It can only be used after completing 3 months of service.",
+    "must_include": ["18", "30"],
+    "source_docs": ["quickleave_spec_v1.2.pdf"],
+    "source_section": "5. Leave Policy",
+    "type": "table"
+  },
+  {
+    "id": "q09",
+    "question": "How many days of Sick Leave does QuickLeave allow per year?",
+    "expected_answer": "12 days per year (increased from 10 days in version 1.2). A document is needed if sick leave is more than 2 consecutive days.",
+    "must_include": ["12"],
+    "must_not_include": ["10 days per year"],
+    "source_docs": ["quickleave_spec_v1.2.pdf"],
+    "source_section": "5. Leave Policy; 10. Revision History",
+    "type": "table",
+    "notes": "Version trap: Revision History mentions the old value of 10 days. Correct answer is the current value, 12."
+  },
+  {
+    "id": "q10",
+    "question": "What happens if a manager does not act on a leave request?",
+    "expected_answer": "After 48 hours the system sends a reminder email to the manager, and after 72 hours the request is escalated to the HR Admin (FR-06).",
+    "must_include": ["48 hours", "72 hours", "HR Admin"],
+    "must_not_include": ["24 hours"],
+    "source_docs": ["quickleave_spec_v1.2.pdf"],
+    "source_section": "4. Functional Requirements (FR-06); 10. Revision History",
+    "type": "multi_section",
+    "notes": "Version trap: v1.1 used a 24-hour reminder. Current value is 48 hours."
+  },
+  {
+    "id": "q11",
+    "question": "What does error code QL-1003 mean?",
+    "expected_answer": "Insufficient leave balance. It returns HTTP status 409.",
+    "must_include": ["Insufficient leave balance", "409"],
+    "source_docs": ["quickleave_spec_v1.2.pdf"],
+    "source_section": "8. Error Codes",
+    "type": "exact_term"
+  },
+  {
+    "id": "q12",
+    "question": "Which API endpoint does an employee call to see their own leave balances?",
+    "expected_answer": "GET /api/v1/balances/me (role: Employee).",
+    "must_include": ["/api/v1/balances/me"],
+    "source_docs": ["quickleave_spec_v1.2.pdf"],
+    "source_section": "7. API Endpoints",
+    "type": "exact_term"
+  },
+  {
+    "id": "q13",
+    "question": "Can an employee cancel a leave request that has already been approved?",
+    "expected_answer": "No. An employee can cancel a request only while its status is Pending. Approved requests can only be cancelled by an HR Admin (FR-07).",
+    "must_include": ["Pending", "HR Admin"],
+    "source_docs": ["quickleave_spec_v1.2.pdf"],
+    "source_section": "4. Functional Requirements (FR-07)",
+    "type": "factual"
+  },
+  {
+    "id": "q14",
+    "question": "Does QuickLeave version 1 support half-day leave?",
+    "expected_answer": "No. Half-day leave is out of scope for version 1 and is planned for a later release.",
+    "must_include": ["out of scope"],
+    "source_docs": ["quickleave_spec_v1.2.pdf"],
+    "source_section": "9. Out of Scope for v1",
+    "type": "factual",
+    "notes": "Looks unanswerable but is answered in the Out of Scope section. Tests false abstention."
+  },
+  {
+    "id": "q15",
+    "question": "What is the monthly uptime target for QuickLeave?",
+    "expected_answer": "99.5% monthly uptime, excluding planned maintenance on Sundays between 02:00 and 04:00 IST (NFR-02).",
+    "must_include": ["99.5%"],
+    "source_docs": ["quickleave_spec_v1.2.pdf"],
+    "source_section": "6. Non-Functional Requirements (NFR-02)",
+    "type": "exact_term"
+  },
+  {
+    "id": "q16",
+    "question": "What are the main dimensions of the base Transformer model: d_model, number of layers, number of heads, d_k and d_ff?",
+    "expected_answer": "d_model = 512, N = 6 layers in both encoder and decoder, h = 8 attention heads, d_k = d_v = 64, and d_ff = 2048.",
+    "must_include": ["512", "6", "8", "64", "2048"],
+    "source_docs": ["attention_is_all_you_need.pdf"],
+    "source_section": "3.1 Encoder and Decoder Stacks; 3.2.2 Multi-Head Attention; 3.3 Position-wise Feed-Forward Networks",
+    "type": "multi_section"
+  },
+  {
+    "id": "q17",
+    "question": "Why does scaled dot-product attention divide by the square root of d_k?",
+    "expected_answer": "For large d_k, dot products grow large in magnitude, pushing the softmax into regions with extremely small gradients. Scaling by 1/sqrt(d_k) counteracts this.",
+    "must_include": ["softmax", "gradient"],
+    "source_docs": ["attention_is_all_you_need.pdf"],
+    "source_section": "3.2.1 Scaled Dot-Product Attention",
+    "type": "factual"
+  },
+  {
+    "id": "q18",
+    "question": "What BLEU scores did the base and big Transformer models get on WMT 2014 English-to-German?",
+    "expected_answer": "Base model: 27.3 BLEU. Big model: 28.4 BLEU.",
+    "must_include": ["27.3", "28.4"],
+    "source_docs": ["attention_is_all_you_need.pdf"],
+    "source_section": "6.1 Machine Translation (Table 2)",
+    "type": "table"
+  },
+  {
+    "id": "q19",
+    "question": "What BLEU score did the big Transformer achieve on WMT 2014 English-to-French?",
+    "expected_answer": "41.8 BLEU, as reported in the abstract and Table 2. (The text of Section 6.1 states 41.0.)",
+    "must_include": ["41.8"],
+    "source_docs": ["attention_is_all_you_need.pdf"],
+    "source_section": "Abstract; 6.1 Machine Translation (Table 2)",
+    "type": "table",
+    "notes": "Conflict trap: the paper itself reports 41.8 in the abstract and Table 2 but 41.0 in the Section 6.1 text. A good answer gives 41.8 and may mention the discrepancy."
+  },
+  {
+    "id": "q20",
+    "question": "Compare self-attention and recurrent layers on complexity per layer, sequential operations and maximum path length.",
+    "expected_answer": "Self-attention: O(n²·d) complexity per layer, O(1) sequential operations, O(1) maximum path length. Recurrent: O(n·d²) complexity, O(n) sequential operations, O(n) maximum path length.",
+    "must_include": ["O(n²·d)", "O(1)", "O(n·d²)", "O(n)"],
+    "source_docs": ["attention_is_all_you_need.pdf"],
+    "source_section": "4 Why Self-Attention (Table 1)",
+    "type": "table"
+  },
+  {
+    "id": "q21",
+    "question": "What hardware was used to train the Transformer, and how long did training take for the base and big models?",
+    "expected_answer": "One machine with 8 NVIDIA P100 GPUs. Base models trained for 100,000 steps (about 12 hours, ~0.4 s per step). Big models trained for 300,000 steps (3.5 days, ~1.0 s per step).",
+    "must_include": ["8", "P100", "12 hours", "3.5 days"],
+    "source_docs": ["attention_is_all_you_need.pdf"],
+    "source_section": "5.2 Hardware and Schedule",
+    "type": "factual"
+  },
+  {
+    "id": "q22",
+    "question": "What value of warmup_steps and which Adam parameters were used?",
+    "expected_answer": "warmup_steps = 4000. Adam with β1 = 0.9, β2 = 0.98 and ε = 10^-9.",
+    "must_include": ["4000", "0.9", "0.98"],
+    "source_docs": ["attention_is_all_you_need.pdf"],
+    "source_section": "5.3 Optimizer",
+    "type": "exact_term"
+  },
+  {
+    "id": "q23",
+    "question": "How did learned positional embeddings compare to sinusoidal positional encodings, and why were sinusoids chosen?",
+    "expected_answer": "They produced nearly identical results (Table 3, row E). The sinusoidal version was chosen because it may allow the model to extrapolate to sequence lengths longer than those seen in training.",
+    "must_include": ["nearly identical", "longer"],
+    "source_docs": ["attention_is_all_you_need.pdf"],
+    "source_section": "3.5 Positional Encoding; 6.2 Model Variations (Table 3)",
+    "type": "multi_section"
+  },
+  {
+    "id": "q24",
+    "question": "QuickLeave requires Azure AD single sign-on. Does the candidate have experience with Azure AD?",
+    "expected_answer": "Yes. The spec requires sign-in through company SSO with Azure AD (NFR-03). The candidate shipped AI Visual Placemat with Azure AD SSO and is Microsoft Azure Fundamentals AZ-900 certified.",
+    "must_include": ["Azure AD", "Visual Placemat"],
+    "source_docs": ["quickleave_spec_v1.2.pdf", "Satwika_Agentic_AI_Engineer_Resume.pdf"],
+    "source_section": "6. Non-Functional Requirements (NFR-03); Experience > AI Visual Placemat; Certifications",
+    "type": "cross_doc"
+  },
+  {
+    "id": "q25",
+    "question": "QuickLeave requires an audit log for approvals and balance changes. Has the candidate built audit logging before?",
+    "expected_answer": "Yes. The spec requires audit logging in FR-10. The candidate shipped AI Visual Placemat with audit logging, and the AI ATP Toolkit also includes audit logging.",
+    "must_include": ["audit log"],
+    "source_docs": ["quickleave_spec_v1.2.pdf", "Satwika_Agentic_AI_Engineer_Resume.pdf"],
+    "source_section": "4. Functional Requirements (FR-10); Experience > AI Visual Placemat; Experience > AI ATP Toolkit",
+    "type": "cross_doc"
+  },
+  {
+    "id": "q26",
+    "question": "What is the candidate's expected salary?",
+    "expected_answer": "ABSTAIN: this information is not in the documents.",
+    "must_include": [],
+    "source_docs": [],
+    "source_section": null,
+    "type": "unanswerable"
+  },
+  {
+    "id": "q27",
+    "question": "Which database does QuickLeave use?",
+    "expected_answer": "ABSTAIN: the spec does not specify a database.",
+    "must_include": [],
+    "source_docs": [],
+    "source_section": null,
+    "type": "unanswerable",
+    "notes": "Tempting to guess PostgreSQL. Tests grounding."
+  },
+  {
+    "id": "q28",
+    "question": "How many parameters does GPT-3 have?",
+    "expected_answer": "ABSTAIN: GPT-3 is not covered in the documents.",
+    "must_include": [],
+    "source_docs": [],
+    "source_section": null,
+    "type": "unanswerable",
+    "notes": "Parametric-knowledge trap: the LLM knows the answer from training, but the documents don't contain it."
+  },
+  {
+    "id": "q29",
+    "question": "Which of her projects compared a self-hosted model with OpenAI's smaller model and found the answer generator, not the search step, was the weak point?",
+    "expected_answer": "IntelliFusion. On 36 queries, retrieval metrics tied, but faithfulness was 1.00 for GPT-4o-mini vs 0.77 for the self-hosted Ollama model, and answer relevance 1.00 vs 0.44.",
+    "must_include": ["IntelliFusion", "0.77", "0.44"],
+    "source_docs": ["Satwika_Agentic_AI_Engineer_Resume.pdf"],
+    "source_section": "Projects > IntelliFusion",
+    "type": "factual",
+    "tier": "hard",
+    "notes": "Paraphrase: the question shares almost no words with the bullet (no 'faithfulness', 'benchmarked', 'Ollama')."
+  },
+  {
+    "id": "q30",
+    "question": "Within what time must a manager be told that someone has asked for time off?",
+    "expected_answer": "Within 1 minute: the manager must receive an email notification when the request is submitted (FR-04).",
+    "must_include": ["1 minute"],
+    "source_docs": ["quickleave_spec_v1.2.pdf"],
+    "source_section": "4. Functional Requirements (FR-04)",
+    "type": "factual",
+    "tier": "hard",
+    "notes": "Paraphrase: 'told' for 'notification', 'time off' for 'leave request'. Several nearby requirements have other time limits (48 and 72 hours, 90 days)."
+  },
+  {
+    "id": "q31",
+    "question": "How far back can someone ask for leave for dates that have already passed?",
+    "expected_answer": "Not more than 90 days in the past (FR-03). An older start date is rejected with error QL-1006 (HTTP 422).",
+    "must_include": ["90 days"],
+    "source_docs": ["quickleave_spec_v1.2.pdf"],
+    "source_section": "4. Functional Requirements (FR-03); 8. Error Codes",
+    "type": "factual",
+    "tier": "hard",
+    "notes": "Paraphrase. The fact appears in two places (a requirement and an error code)."
+  },
+  {
+    "id": "q32",
+    "question": "Who uploads the yearly list of public holidays, and in what file format?",
+    "expected_answer": "The HR Admin uploads it as a CSV file (FR-09, POST /api/v1/holidays/upload).",
+    "must_include": ["HR Admin", "CSV"],
+    "source_docs": ["quickleave_spec_v1.2.pdf"],
+    "source_section": "4. Functional Requirements (FR-09); 7. API Endpoints",
+    "type": "factual",
+    "tier": "hard",
+    "notes": "Paraphrase ('list of public holidays' for 'holiday list')."
+  },
+  {
+    "id": "q33",
+    "question": "What tokenization schemes and vocabulary sizes were used for the English-German and English-French training data?",
+    "expected_answer": "English-German used byte-pair encoding with a shared source-target vocabulary of about 37000 tokens. English-French used a 32000 word-piece vocabulary.",
+    "must_include": ["37000", "32000"],
+    "source_docs": ["attention_is_all_you_need.pdf"],
+    "source_section": "5.1 Training Data and Batching",
+    "type": "factual",
+    "tier": "hard",
+    "notes": "Two similar numbers for two language pairs; the constituency-parsing section also lists 16K and 32K vocabularies, which is a distractor."
+  },
+  {
+    "id": "q34",
+    "question": "How much larger was the English-French training set than the English-German one?",
+    "expected_answer": "English-French had 36M sentence pairs against about 4.5 million for English-German, roughly 8 times as many.",
+    "must_include": ["36M", "4.5 million"],
+    "source_docs": ["attention_is_all_you_need.pdf"],
+    "source_section": "5.1 Training Data and Batching",
+    "type": "factual",
+    "tier": "hard",
+    "notes": "Needs both numbers and a comparison; the question never says 'sentence pairs' or 'WMT'."
+  },
+  {
+    "id": "q35",
+    "question": "What BLEU score does the text of the Results section give for the big model on English-to-French, and does it match Table 2?",
+    "expected_answer": "The text says 41.0, but Table 2 (and the abstract) give 41.8, so the paper is inconsistent. The table value, 41.8, is the one repeated in the abstract.",
+    "must_include": ["41.0", "41.8"],
+    "source_docs": ["attention_is_all_you_need.pdf"],
+    "source_section": "6.1 Machine Translation; Table 2; Abstract",
+    "type": "multi_section",
+    "tier": "hard",
+    "notes": "Conflict inside the source: two chunks hold different numbers for the same result; the answer must report both."
+  },
+  {
+    "id": "q36",
+    "question": "What was the reminder time before version 1.2, and what is it now?",
+    "expected_answer": "It was 24 hours (set in version 1.1) and is now 48 hours (changed in version 1.2).",
+    "must_include": ["24", "48"],
+    "source_docs": ["quickleave_spec_v1.2.pdf"],
+    "source_section": "4. Functional Requirements (FR-06); 10. Revision History",
+    "type": "multi_section",
+    "tier": "hard",
+    "notes": "Version trap: the history holds the old value, the requirement the current one; both are needed."
+  },
+  {
+    "id": "q37",
+    "question": "Which version introduced the error code for requests dated too far in the past, and what HTTP status does it return?",
+    "expected_answer": "Version 1.2 (15 September 2026) added QL-1006, which returns HTTP 422 when the leave start date is more than 90 days in the past.",
+    "must_include": ["QL-1006", "422", "1.2"],
+    "source_docs": ["quickleave_spec_v1.2.pdf"],
+    "source_section": "8. Error Codes; 10. Revision History",
+    "type": "multi_section",
+    "tier": "hard",
+    "notes": "The error code is never named in the question; the answer joins the error table and the revision history."
+  },
+  {
+    "id": "q38",
+    "question": "Which leave types cannot be carried forward to the next year?",
+    "expected_answer": "Casual Leave, Sick Leave, Maternity Leave and Paternity Leave. Only Earned Leave can be carried forward, up to 30 days.",
+    "must_include": ["Casual", "Sick", "Maternity", "Paternity"],
+    "source_docs": ["quickleave_spec_v1.2.pdf"],
+    "source_section": "5. Leave Policy",
+    "type": "table",
+    "tier": "hard",
+    "notes": "Negation over a table: the answer is every row whose Carry Forward cell is 'No'."
+  },
+  {
+    "id": "q39",
+    "question": "Which leave type gives the most days per year, and how many?",
+    "expected_answer": "Maternity Leave, with 182 days per year.",
+    "must_include": ["Maternity", "182"],
+    "source_docs": ["quickleave_spec_v1.2.pdf"],
+    "source_section": "5. Leave Policy",
+    "type": "table",
+    "tier": "hard",
+    "notes": "Needs a comparison across the table's rows."
+  },
+  {
+    "id": "q40",
+    "question": "Does a two-day sick leave need a supporting document?",
+    "expected_answer": "No. A document is needed only if sick leave is more than 2 consecutive days, so two days does not need one.",
+    "must_include": ["more than 2 consecutive"],
+    "source_docs": ["quickleave_spec_v1.2.pdf"],
+    "source_section": "5. Leave Policy",
+    "type": "table",
+    "tier": "hard",
+    "notes": "The table cell says 'Yes, if more than 2 consecutive days'; the question needs the threshold applied, not copied."
+  },
+  {
+    "id": "q41",
+    "question": "Can someone who joined last month take Earned Leave straight away?",
+    "expected_answer": "No. Earned Leave can only be used after completing 3 months of service. New employees receive leave pro-rata from their joining month.",
+    "must_include": ["3 months", "pro-rata"],
+    "source_docs": ["quickleave_spec_v1.2.pdf"],
+    "source_section": "5. Leave Policy",
+    "type": "factual",
+    "tier": "hard",
+    "notes": "Paraphrase and a yes/no that needs the rule applied to a case."
+  },
+  {
+    "id": "q42",
+    "question": "Which HTTP method and path approve a leave request, and who may call it?",
+    "expected_answer": "PATCH /api/v1/leave-requests/{id}/approve, for the Manager and HR Admin roles.",
+    "must_include": ["PATCH", "/approve", "Manager"],
+    "source_docs": ["quickleave_spec_v1.2.pdf"],
+    "source_section": "7. API Endpoints",
+    "type": "exact_term",
+    "tier": "hard",
+    "notes": "Seven near-identical endpoint rows; only one is the approve call."
+  },
+  {
+    "id": "q43",
+    "question": "In total, how many MCP tool servers did the candidate build across ReleaseForge AI and DevPilot AI?",
+    "expected_answer": "11: 5 MCP servers in ReleaseForge AI and 6 tool servers in DevPilot AI.",
+    "must_include": ["5 MCP servers", "6 tool servers"],
+    "source_docs": ["Satwika_Agentic_AI_Engineer_Resume.pdf"],
+    "source_section": "Projects > ReleaseForge AI; Projects > DevPilot AI",
+    "type": "multi_section",
+    "tier": "hard",
+    "notes": "Two chunks and an addition."
+  },
+  {
+    "id": "q44",
+    "question": "Was the fine-tuned model faster than the base model at every latency percentile?",
+    "expected_answer": "No. Median latency was lower (2.86s vs 3.28s) but p95 latency was higher (8.99s vs 7.26s).",
+    "must_include": ["2.86s", "8.99s"],
+    "source_docs": ["Satwika_Agentic_AI_Engineer_Resume.pdf"],
+    "source_section": "Projects > DevPilot AI",
+    "type": "factual",
+    "tier": "hard",
+    "notes": "A yes/no that needs two pairs of numbers compared; the model must not answer from the headline accuracy gain."
+  },
+  {
+    "id": "q45",
+    "question": "How many fixtures were in the ReleaseForge AI evaluation set, how many had injected defects, and how many were clean?",
+    "expected_answer": "100 fixtures: 84 with injected defects (7 defect classes across 12 domains) and 16 hand-written clean negatives.",
+    "must_include": ["100-fixture", "84", "16"],
+    "source_docs": ["Satwika_Agentic_AI_Engineer_Resume.pdf"],
+    "source_section": "Projects > ReleaseForge AI",
+    "type": "factual",
+    "tier": "hard",
+    "notes": "A dense bullet with many numbers; an earlier 58-fixture set is a distractor."
+  },
+  {
+    "id": "q46",
+    "question": "QuickLeave defines three roles with different permissions. Has the candidate built role-based access control into a system before?",
+    "expected_answer": "Yes. AI Visual Placemat shipped with four-tier RBAC (and ReleaseForge AI uses role-scoped allow-lists for its tools). QuickLeave defines the Employee, Manager and HR Admin roles.",
+    "must_include": ["Permissions", "four-tier RBAC"],
+    "source_docs": ["quickleave_spec_v1.2.pdf", "Satwika_Agentic_AI_Engineer_Resume.pdf"],
+    "source_section": "3. Users and Roles; Experience > AI Visual Placemat; Projects > ReleaseForge AI",
+    "type": "cross_doc",
+    "tier": "hard",
+    "notes": "Needs a chunk from each document; the question's words ('QuickLeave', 'roles') pull toward the spec."
+  },
+  {
+    "id": "q47",
+    "question": "QuickLeave exposes its API under /api/v1. Does the candidate have REST API design experience?",
+    "expected_answer": "Yes. The candidate lists REST API design (with FastAPI) among her backend skills. The QuickLeave API is versioned under /api/v1.",
+    "must_include": ["/api/v1", "REST API design"],
+    "source_docs": ["quickleave_spec_v1.2.pdf", "Satwika_Agentic_AI_Engineer_Resume.pdf"],
+    "source_section": "7. API Endpoints; Core Skills",
+    "type": "cross_doc",
+    "tier": "hard",
+    "notes": "Needs the spec's API table and the resume's skills section."
+  },
+  {
+    "id": "q48",
+    "question": "How many days of Study Leave does QuickLeave give each year?",
+    "expected_answer": "ABSTAIN: the spec lists only Casual, Sick, Earned, Maternity and Paternity Leave. There is no Study Leave.",
+    "must_include": [],
+    "source_docs": [],
+    "source_section": null,
+    "type": "unanswerable",
+    "tier": "hard",
+    "notes": "Near-miss trap: the question matches the leave policy table closely, but that leave type does not exist."
+  },
+  {
+    "id": "q49",
+    "question": "What BLEU score did the Transformer achieve on English-to-Spanish translation?",
+    "expected_answer": "ABSTAIN: the paper reports only English-to-German and English-to-French translation.",
+    "must_include": [],
+    "source_docs": [],
+    "source_section": null,
+    "type": "unanswerable",
+    "tier": "hard",
+    "notes": "Near-miss trap: the retrieved Results chunks look right, but the language pair is not in the paper."
+  },
+  {
+    "id": "q50",
+    "question": "What was the candidate's score in high school?",
+    "expected_answer": "ABSTAIN: the resume gives only the B.Tech CGPA (9.13), not any school results.",
+    "must_include": [],
+    "source_docs": [],
+    "source_section": null,
+    "type": "unanswerable",
+    "tier": "hard",
+    "notes": "Near-miss trap: the Education section is retrieved and holds a similar number (the CGPA)."
+  }
+]

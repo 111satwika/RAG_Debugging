@@ -1,0 +1,747 @@
+[
+  {
+    "id": "h01",
+    "question": "What changed in version 1.2 of the QuickLeave spec?",
+    "required_answer": "Sick Leave was increased from 10 to 12 days, the reminder time was changed from 24 to 48 hours, and error code QL-1006 was added.",
+    "optional_details": "Version 1.2 is dated 15 September 2026, authored by Priya Raman.",
+    "expected_answer": "Version 1.2 (15 September 2026) increased Sick Leave from 10 to 12 days, changed the reminder time from 24 to 48 hours, and added error code QL-1006.",
+    "must_include": [
+      "12",
+      "48",
+      "QL-1006"
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "10. Revision History",
+    "type": "factual",
+    "tier": "hard",
+    "notes": "Pattern: completeness. Three changes in one table cell; tests whether the model lists all of them (like q04)."
+  },
+  {
+    "id": "h02",
+    "question": "Does a three-day sick leave need a supporting document?",
+    "required_answer": "Yes. A document is needed if sick leave is more than 2 consecutive days.",
+    "expected_answer": "Yes. A document is needed if sick leave is more than 2 consecutive days, and three days is more than two.",
+    "expected_verdict": "yes",
+    "must_include": [
+      [
+        "more than 2",
+        "more than two"
+      ]
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "5. Leave Policy",
+    "type": "table",
+    "tier": "hard",
+    "notes": "Pattern: applying a threshold, opposite direction of q40. Catches a model that now says No to every threshold question."
+  },
+  {
+    "id": "h03",
+    "question": "Does every leave type give at least 10 days per year?",
+    "required_answer": "Yes. The smallest allowance is Paternity Leave with 10 days.",
+    "optional_details": "Casual 12, Sick 12, Earned 18, Maternity 182, Paternity 10.",
+    "expected_answer": "Yes. The smallest allowance is Paternity Leave with exactly 10 days; Casual and Sick give 12, Earned 18 and Maternity 182.",
+    "expected_verdict": "yes",
+    "must_include": [
+      "Paternity",
+      "10"
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "5. Leave Policy",
+    "type": "table",
+    "tier": "hard",
+    "notes": "Pattern: an 'every' question whose answer is Yes. Tests whether rule 7 (v2.4) makes the model over-cautious."
+  },
+  {
+    "id": "h04",
+    "question": "Can a Manager cancel a leave request that has already been approved?",
+    "required_answer": "No. Approved requests can only be cancelled by an HR Admin.",
+    "optional_details": "This is FR-07. Employees can cancel their own requests only while Pending.",
+    "expected_answer": "No. Approved requests can only be cancelled by an HR Admin (FR-07).",
+    "expected_verdict": "no",
+    "must_include": [
+      "HR Admin"
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "4. Functional Requirements (FR-07); 7. API Endpoints",
+    "type": "factual",
+    "tier": "hard",
+    "notes": "Pattern: attribution between roles. FR-07 talks about employees and HR Admins; the question asks about Managers."
+  },
+  {
+    "id": "h05",
+    "question": "What happens to unused Casual Leave at the end of the year?",
+    "required_answer": "It does not carry forward; balances reset on 1 January.",
+    "optional_details": "Only Earned Leave can be carried forward (up to 30 days). The leave year runs 1 January to 31 December.",
+    "expected_answer": "It is not carried forward: Casual Leave has no carry-forward and balances reset on 1 January.",
+    "must_include": [
+      [
+        "1 January",
+        "January 1"
+      ],
+      [
+        "no carry",
+        "not carried",
+        "cannot be carried",
+        "does not carry",
+        "carry forward: no",
+        "reset"
+      ]
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "5. Leave Policy",
+    "type": "multi_section",
+    "tier": "hard",
+    "notes": "Pattern: joining a table cell with a sentence above the table."
+  },
+  {
+    "id": "h06",
+    "question": "Which error code is returned when a leave request overlaps an existing request, and with what HTTP status?",
+    "required_answer": "QL-1004, with HTTP status 409.",
+    "expected_answer": "QL-1004, with HTTP status 409 (the request overlaps an existing approved or pending request).",
+    "must_include": [
+      "QL-1004",
+      "409"
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "8. Error Codes",
+    "type": "exact_term",
+    "tier": "hard",
+    "notes": "Pattern: near-identical table rows (QL-1003 also returns 409)."
+  },
+  {
+    "id": "h07",
+    "question": "How many days of bereavement leave does QuickLeave give?",
+    "expected_answer": "ABSTAIN: the spec lists only Casual, Sick, Earned, Maternity and Paternity Leave.",
+    "must_include": [],
+    "source_docs": [],
+    "source_section": null,
+    "type": "unanswerable",
+    "tier": "hard",
+    "notes": "Near-miss trap: the leave table is retrieved, but the leave type does not exist."
+  },
+  {
+    "id": "h08",
+    "question": "Did the big Transformer get a higher BLEU score than the base model on both English-to-German and English-to-French?",
+    "required_answer": "Yes. English-to-German: 28.4 (big) vs 27.3 (base). English-to-French: big model 41.8 (Table 2) or 41.0 (Section 6.1 text) vs 38.1 (base). The paper itself gives both 41.8 and 41.0, so either value is fully correct.",
+    "expected_answer": "Yes. English-to-German: 28.4 (big) vs 27.3 (base). English-to-French: 41.8 (big) vs 38.1 (base).",
+    "expected_verdict": "yes",
+    "must_include": [
+      "28.4",
+      "27.3",
+      [
+        "41.8",
+        "41.0"
+      ],
+      "38.1"
+    ],
+    "source_docs": [
+      "attention_is_all_you_need.pdf"
+    ],
+    "source_section": "6.1 Machine Translation (Table 2)",
+    "type": "table",
+    "tier": "hard",
+    "notes": "Pattern: a 'both' question whose answer is Yes; tests rule 7 over-caution. The Section 6.1 text says 41.0, which is still higher than 38.1."
+  },
+  {
+    "id": "h09",
+    "question": "What regularization did the Transformer use during training, and with what values?",
+    "required_answer": "Residual dropout with P_drop = 0.1 for the base model, and label smoothing with ε_ls = 0.1.",
+    "optional_details": "Dropout is also applied to the sums of embeddings and positional encodings. The section says 'three types' but describes two.",
+    "expected_answer": "Residual dropout (P_drop = 0.1 for the base model, also applied to the sums of embeddings and positional encodings) and label smoothing (ε_ls = 0.1).",
+    "must_include": [
+      "dropout",
+      "label smoothing",
+      "0.1"
+    ],
+    "source_docs": [
+      "attention_is_all_you_need.pdf"
+    ],
+    "source_section": "5.4 Regularization",
+    "type": "factual",
+    "tier": "hard",
+    "notes": "Pattern: completeness with two items and their values. The source says 'three types' but lists two; a good answer does not invent a third."
+  },
+  {
+    "id": "h10",
+    "question": "How many sub-layers does each decoder layer have, and what does the extra one do?",
+    "required_answer": "Three. The third sub-layer performs multi-head attention over the output of the encoder stack.",
+    "optional_details": "The decoder's self-attention is also masked so positions cannot attend to later positions.",
+    "expected_answer": "Three. In addition to the encoder's two sub-layers, the decoder inserts a third that performs multi-head attention over the output of the encoder stack.",
+    "must_include": [
+      [
+        "three",
+        "3 sub"
+      ],
+      "encoder"
+    ],
+    "source_docs": [
+      "attention_is_all_you_need.pdf"
+    ],
+    "source_section": "3.1 Encoder and Decoder Stacks",
+    "type": "factual",
+    "tier": "hard",
+    "notes": "Pattern: a count plus an explanation; the encoder and decoder paragraphs sit next to each other."
+  },
+  {
+    "id": "h11",
+    "question": "Was the base Transformer model trained on a single GPU?",
+    "required_answer": "No. It was trained on one machine with 8 NVIDIA P100 GPUs.",
+    "optional_details": "100,000 steps, about 12 hours.",
+    "expected_answer": "No. It was trained on one machine with 8 NVIDIA P100 GPUs (100,000 steps, about 12 hours).",
+    "expected_verdict": "no",
+    "must_include": [
+      [
+        "8 NVIDIA",
+        "8 P100",
+        "eight"
+      ]
+    ],
+    "source_docs": [
+      "attention_is_all_you_need.pdf"
+    ],
+    "source_section": "5.2 Hardware and Schedule",
+    "type": "factual",
+    "tier": "hard",
+    "notes": "Pattern: wording trap ('one machine' vs 'single GPU')."
+  },
+  {
+    "id": "h12",
+    "question": "How long did it take to train the Transformer for English constituency parsing?",
+    "expected_answer": "ABSTAIN: the paper describes the parsing setup (4 layers, d_model = 1024, WSJ and semi-supervised data) but gives no training time.",
+    "must_include": [],
+    "source_docs": [],
+    "source_section": null,
+    "type": "unanswerable",
+    "tier": "hard",
+    "notes": "Near-miss trap: Section 6.3 and Section 5.2 are both retrieved; the model may borrow 12 hours or 3.5 days from the translation models."
+  },
+  {
+    "id": "h13",
+    "question": "In IntelliFusion, what did Corrective RAG with query transformation improve, and what did it leave unchanged?",
+    "required_answer": "It lifted Recall@10 from 0.905 to 0.932 and Precision@10 from 0.552 to 0.588, but left MRR flat.",
+    "optional_details": "The resume reads this as better candidate sets, not better ranking.",
+    "expected_answer": "It lifted Recall@10 from 0.905 to 0.932 and Precision@10 from 0.552 to 0.588 while leaving MRR flat: better candidate sets, not better ranking.",
+    "must_include": [
+      "0.932",
+      "0.588",
+      "MRR",
+      [
+        "flat",
+        "unchanged",
+        "did not change",
+        "no change",
+        "not change",
+        "same"
+      ]
+    ],
+    "source_docs": [
+      "Satwika_Agentic_AI_Engineer_Resume.pdf"
+    ],
+    "source_section": "Projects > IntelliFusion",
+    "type": "factual",
+    "tier": "hard",
+    "notes": "Pattern: completeness in one sentence (like q04). Also a distractor: hybrid MRR@10 0.831 is in the sentence before."
+  },
+  {
+    "id": "h14",
+    "question": "Has the candidate built human approval steps into an AI agent?",
+    "required_answer": "Yes. ReleaseForge AI has an interrupt-based human approval gate before every state-changing operation, and DevPilot AI requires human approval on every mutating action.",
+    "optional_details": "The summary also mentions human-in-the-loop approval on every mutating action in the shipped GenAI platform.",
+    "expected_answer": "Yes. ReleaseForge AI pauses at an interrupt-based human approval gate before every state-changing operation, and DevPilot AI requires human approval on every mutating action.",
+    "expected_verdict": "yes",
+    "must_include": [
+      "ReleaseForge",
+      "DevPilot"
+    ],
+    "source_docs": [
+      "Satwika_Agentic_AI_Engineer_Resume.pdf"
+    ],
+    "source_section": "Projects > ReleaseForge AI; Projects > DevPilot AI",
+    "type": "multi_section",
+    "tier": "hard",
+    "notes": "Pattern: attribution and completeness across two projects; the question says 'approval steps', not 'human-in-the-loop'."
+  },
+  {
+    "id": "h15",
+    "question": "Which project used an open-source 7B model, and what precision did that model reach?",
+    "required_answer": "ReleaseForge AI. The 7B model held 97% precision.",
+    "optional_details": "At about 1 false positive per 100 lines, on an earlier 58-fixture set.",
+    "expected_answer": "ReleaseForge AI. The open-source 7B model held 97% precision at about 1 false positive per 100 lines on an earlier 58-fixture set.",
+    "must_include": [
+      "ReleaseForge",
+      "97%"
+    ],
+    "source_docs": [
+      "Satwika_Agentic_AI_Engineer_Resume.pdf"
+    ],
+    "source_section": "Projects > ReleaseForge AI",
+    "type": "factual",
+    "tier": "hard",
+    "notes": "Pattern: attribution. The same sentence gives GPT-4o-mini 94% precision; the judge must fail an answer that gives the 7B model 94%."
+  },
+  {
+    "id": "h16",
+    "question": "How many automated tests does DevPilot AI have?",
+    "required_answer": "150+ automated tests.",
+    "expected_answer": "150+ automated tests.",
+    "must_include": [
+      "150"
+    ],
+    "source_docs": [
+      "Satwika_Agentic_AI_Engineer_Resume.pdf"
+    ],
+    "source_section": "Projects > DevPilot AI",
+    "type": "exact_term",
+    "tier": "hard",
+    "notes": "Simple control question: should always pass."
+  },
+  {
+    "id": "h17",
+    "question": "QuickLeave must email the manager when a request is submitted (FR-04). Does the resume show the candidate has built email notifications?",
+    "required_answer": "The resume does not mention building email notifications.",
+    "optional_details": "FR-04 requires an email to the manager within 1 minute of submission.",
+    "expected_answer": "The spec requires an email notification to the manager within 1 minute (FR-04), but the resume does not mention building email notifications.",
+    "must_include": [
+      [
+        "not mention",
+        "no evidence",
+        "does not show",
+        "doesn't show",
+        "not shown",
+        "not found",
+        "no mention",
+        "does not state"
+      ]
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "4. Functional Requirements (FR-04)",
+    "type": "cross_doc",
+    "tier": "hard",
+    "notes": "Pattern: requirement-matching where the resume has no evidence. A Yes is a hallucination; found should still be true because the spec part is answered. Accept 'No' plus 'not mentioned'."
+  },
+  {
+    "id": "h18",
+    "question": "Which company did the candidate work for before Cprime?",
+    "expected_answer": "ABSTAIN: the resume lists only Cprime Inc as an employer.",
+    "must_include": [],
+    "source_docs": [],
+    "source_section": null,
+    "type": "unanswerable",
+    "tier": "hard",
+    "notes": "Near-miss trap: the Experience section is retrieved and lists an apprenticeship, which is also at Cprime."
+  },
+  {
+    "id": "h19",
+    "question": "What is the maximum length of the optional reason in a leave request?",
+    "required_answer": "500 characters.",
+    "optional_details": "The rule is FR-01.",
+    "expected_answer": "Up to 500 characters (FR-01).",
+    "must_include": [
+      "500"
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "4. Functional Requirements (FR-01)",
+    "type": "factual",
+    "tier": "easy"
+  },
+  {
+    "id": "h20",
+    "question": "What does error code QL-1001 mean?",
+    "required_answer": "End date is before start date.",
+    "optional_details": "It returns HTTP status 400.",
+    "expected_answer": "End date is before start date. It returns HTTP status 400.",
+    "must_include": [
+      "end date is before start date"
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "8. Error Codes",
+    "type": "exact_term",
+    "tier": "easy"
+  },
+  {
+    "id": "h21",
+    "question": "How many days of Paternity Leave does an employee get per year?",
+    "required_answer": "10 days per year.",
+    "optional_details": "It cannot be carried forward and needs no document.",
+    "expected_answer": "10 days per year. It cannot be carried forward and needs no document.",
+    "must_include": [
+      "10"
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "5. Leave Policy",
+    "type": "table",
+    "tier": "easy"
+  },
+  {
+    "id": "h22",
+    "question": "How long must leave records and audit logs be kept?",
+    "required_answer": "7 years.",
+    "optional_details": "The requirement is NFR-04.",
+    "expected_answer": "7 years (NFR-04).",
+    "must_include": [
+      [
+        "7 years",
+        "seven years"
+      ]
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "6. Non-Functional Requirements (NFR-04)",
+    "type": "factual",
+    "tier": "easy"
+  },
+  {
+    "id": "h23",
+    "question": "What activation function is used in the position-wise feed-forward network?",
+    "required_answer": "ReLU.",
+    "optional_details": "It sits between two linear transformations.",
+    "expected_answer": "ReLU, between two linear transformations.",
+    "must_include": [
+      "ReLU"
+    ],
+    "source_docs": [
+      "attention_is_all_you_need.pdf"
+    ],
+    "source_section": "3.3 Position-wise Feed-Forward Networks",
+    "type": "factual",
+    "tier": "easy"
+  },
+  {
+    "id": "h24",
+    "question": "What beam size and length penalty were used for translation?",
+    "required_answer": "Beam size 4 and length penalty α = 0.6.",
+    "expected_answer": "Beam search with a beam size of 4 and length penalty α = 0.6.",
+    "must_include": [
+      [
+        "beam size of 4",
+        "beam size 4",
+        "beam size is 4",
+        "beam of 4",
+        "size of 4"
+      ],
+      "0.6"
+    ],
+    "source_docs": [
+      "attention_is_all_you_need.pdf"
+    ],
+    "source_section": "6.1 Machine Translation",
+    "type": "exact_term",
+    "tier": "easy",
+    "notes": "Distractor: constituency parsing used beam size 21 and α = 0.3."
+  },
+  {
+    "id": "h25",
+    "question": "What was the training cost in FLOPs of the base Transformer on English-to-German?",
+    "required_answer": "3.3 × 10^18 FLOPs.",
+    "expected_answer": "3.3 × 10^18 FLOPs.",
+    "must_include": [
+      "3.3",
+      [
+        "10^18",
+        "10¹⁸",
+        "1e18",
+        "1018"
+      ]
+    ],
+    "source_docs": [
+      "attention_is_all_you_need.pdf"
+    ],
+    "source_section": "6.1 Machine Translation (Table 2)",
+    "type": "table",
+    "tier": "easy",
+    "notes": "PDF extraction may render 10^18 as '1018', so that form is accepted."
+  },
+  {
+    "id": "h26",
+    "question": "What two tasks was the Transformer evaluated on in the paper?",
+    "required_answer": "Machine translation and English constituency parsing.",
+    "optional_details": "The translation tasks were WMT 2014 English-to-German and English-to-French.",
+    "expected_answer": "Machine translation (WMT 2014 English-to-German and English-to-French) and English constituency parsing.",
+    "must_include": [
+      "translation",
+      "constituency parsing"
+    ],
+    "source_docs": [
+      "attention_is_all_you_need.pdf"
+    ],
+    "source_section": "6.1 Machine Translation; 6.3 English Constituency Parsing",
+    "type": "multi_section",
+    "tier": "easy"
+  },
+  {
+    "id": "h27",
+    "question": "What certifications does the candidate hold?",
+    "required_answer": "AI Agents Intensive Course with Google (Kaggle × Google) and Microsoft Azure Fundamentals AZ-900.",
+    "expected_answer": "AI Agents Intensive Course with Google (Kaggle × Google) and Microsoft Azure Fundamentals AZ-900.",
+    "must_include": [
+      "AZ-900",
+      [
+        "AI Agents Intensive",
+        "Kaggle"
+      ]
+    ],
+    "source_docs": [
+      "Satwika_Agentic_AI_Engineer_Resume.pdf"
+    ],
+    "source_section": "Certifications",
+    "type": "factual",
+    "tier": "easy"
+  },
+  {
+    "id": "h28",
+    "question": "How many configuration domains does the AI ATP Toolkit expose?",
+    "required_answer": "29+ configuration domains.",
+    "optional_details": "Exposed through a typed TypeScript monorepo.",
+    "expected_answer": "29+ configuration domains, through a typed TypeScript monorepo.",
+    "must_include": [
+      "29"
+    ],
+    "source_docs": [
+      "Satwika_Agentic_AI_Engineer_Resume.pdf"
+    ],
+    "source_section": "Experience > AI ATP Toolkit",
+    "type": "exact_term",
+    "tier": "easy"
+  },
+  {
+    "id": "h29",
+    "question": "How many stages does the ReleaseForge AI pipeline have, and how many role-scoped allow-lists does it use?",
+    "required_answer": "9 stages and 7 role-scoped allow-lists.",
+    "optional_details": "The allow-lists are checked before tool dispatch.",
+    "expected_answer": "9 stages (plan → code → test → review → PR → deploy → monitor) and 7 role-scoped allow-lists checked before dispatch.",
+    "must_include": [
+      [
+        "9 stages",
+        "nine stages"
+      ],
+      [
+        "7 role",
+        "7 allow",
+        "seven role"
+      ]
+    ],
+    "source_docs": [
+      "Satwika_Agentic_AI_Engineer_Resume.pdf"
+    ],
+    "source_section": "Projects > ReleaseForge AI",
+    "type": "multi_section",
+    "tier": "easy",
+    "notes": "Two facts from two different bullets of the same project."
+  },
+  {
+    "id": "h30",
+    "question": "QuickLeave is a web application. Has the candidate built and deployed a web app?",
+    "required_answer": "Yes. The candidate built and deployed the Meeting Room Web App.",
+    "optional_details": "It is in daily use across the office, replacing manual booking over Slack.",
+    "expected_answer": "Yes. QuickLeave is a web application, and the candidate built and deployed the Meeting Room Web App, now in daily use across the office.",
+    "expected_verdict": "yes",
+    "must_include": [
+      "Meeting Room"
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf",
+      "Satwika_Agentic_AI_Engineer_Resume.pdf"
+    ],
+    "source_section": "1. Overview; Experience > Meeting Room Web App",
+    "type": "cross_doc",
+    "tier": "easy"
+  },
+  {
+    "id": "h31",
+    "question": "What is the candidate's date of birth?",
+    "expected_answer": "ABSTAIN: the resume does not give a date of birth.",
+    "must_include": [],
+    "source_docs": [],
+    "source_section": null,
+    "type": "unanswerable",
+    "tier": "easy"
+  },
+  {
+    "id": "h32",
+    "question": "Which programming language is QuickLeave built in?",
+    "expected_answer": "ABSTAIN: the spec does not name a programming language.",
+    "must_include": [],
+    "source_docs": [],
+    "source_section": null,
+    "type": "unanswerable",
+    "tier": "easy",
+    "notes": "Tempting to guess from the API design. Tests grounding."
+  },
+  {
+    "id": "h33",
+    "question": "How many employees does the first release of QuickLeave target?",
+    "required_answer": "About 200 employees.",
+    "optional_details": "It targets a single company office.",
+    "expected_answer": "A single company office of about 200 employees.",
+    "must_include": [
+      "200"
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "1. Overview",
+    "type": "factual",
+    "tier": "easy"
+  },
+  {
+    "id": "h34",
+    "question": "What does the masking in the decoder's self-attention prevent?",
+    "required_answer": "It prevents positions from attending to subsequent positions.",
+    "optional_details": "Predictions for position i depend only on known outputs at positions before i.",
+    "expected_answer": "It prevents positions from attending to subsequent positions, so predictions for position i depend only on earlier outputs.",
+    "must_include": [
+      [
+        "subsequent positions",
+        "later positions",
+        "future positions"
+      ]
+    ],
+    "source_docs": [
+      "attention_is_all_you_need.pdf"
+    ],
+    "source_section": "3.1 Encoder and Decoder Stacks",
+    "type": "factual",
+    "tier": "easy"
+  },
+  {
+    "id": "h35",
+    "question": "What models did the candidate's Fake News Detection project compare?",
+    "required_answer": "RNN and LSTM text classifiers.",
+    "optional_details": "They were compared on held-out accuracy.",
+    "expected_answer": "RNN and LSTM text classifiers, compared on held-out accuracy.",
+    "must_include": [
+      "RNN",
+      "LSTM"
+    ],
+    "source_docs": [
+      "Satwika_Agentic_AI_Engineer_Resume.pdf"
+    ],
+    "source_section": "Education",
+    "type": "factual",
+    "tier": "easy"
+  },
+  {
+    "id": "h36",
+    "question": "Which HTTP method and endpoint create a leave request?",
+    "required_answer": "POST /api/v1/leave-requests.",
+    "optional_details": "The role is Employee.",
+    "expected_answer": "POST /api/v1/leave-requests (role: Employee).",
+    "must_include": [
+      "POST",
+      "/api/v1/leave-requests"
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "7. API Endpoints",
+    "type": "exact_term",
+    "tier": "easy"
+  },
+  {
+    "id": "h37",
+    "question": "What d_model was used for the constituency parsing Transformer?",
+    "required_answer": "d_model = 1024.",
+    "optional_details": "It had 4 layers.",
+    "expected_answer": "A 4-layer Transformer with d_model = 1024.",
+    "must_include": [
+      "1024"
+    ],
+    "source_docs": [
+      "attention_is_all_you_need.pdf"
+    ],
+    "source_section": "6.3 English Constituency Parsing",
+    "type": "exact_term",
+    "tier": "easy"
+  },
+  {
+    "id": "h38",
+    "question": "Which leave type has the code EL?",
+    "required_answer": "Earned Leave.",
+    "expected_answer": "Earned Leave.",
+    "must_include": [
+      "Earned"
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "5. Leave Policy",
+    "type": "table",
+    "tier": "easy"
+  },
+  {
+    "id": "h39",
+    "question": "What BLEU score does Table 2 report for ByteNet on English-to-German?",
+    "required_answer": "23.75.",
+    "expected_answer": "23.75 BLEU.",
+    "must_include": [
+      "23.75"
+    ],
+    "source_docs": [
+      "attention_is_all_you_need.pdf"
+    ],
+    "source_section": "6.1 Machine Translation (Table 2)",
+    "type": "table",
+    "tier": "easy"
+  },
+  {
+    "id": "h40",
+    "question": "How many attention heads does the base Transformer use, and how many does the big model use?",
+    "required_answer": "The base model uses 8 heads and the big model uses 16.",
+    "expected_answer": "Base: h = 8 heads. Big: 16 heads.",
+    "must_include": [
+      [
+        "8 heads",
+        "h = 8",
+        "8 attention",
+        "8 parallel",
+        "eight"
+      ],
+      "16"
+    ],
+    "source_docs": [
+      "attention_is_all_you_need.pdf"
+    ],
+    "source_section": "3.2.2 Multi-Head Attention; 6.2 Model Variations (Table 3)",
+    "type": "multi_section",
+    "tier": "easy"
+  },
+  {
+    "id": "h41",
+    "question": "QuickLeave lets HR Admins upload a CSV file. Has the candidate built anything that processes CSV files?",
+    "required_answer": "Yes. AI Visual Placemat converts Excel/CSV files into interactive capability maps.",
+    "optional_details": "QuickLeave's holiday upload is FR-09.",
+    "expected_answer": "Yes. QuickLeave accepts a holiday CSV upload (FR-09), and the candidate's AI Visual Placemat converts Excel/CSV files and meeting transcripts into interactive capability maps.",
+    "expected_verdict": "yes",
+    "must_include": [
+      "Visual Placemat"
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf",
+      "Satwika_Agentic_AI_Engineer_Resume.pdf"
+    ],
+    "source_section": "4. Functional Requirements (FR-09); Experience > AI Visual Placemat",
+    "type": "cross_doc",
+    "tier": "easy"
+  }
+]

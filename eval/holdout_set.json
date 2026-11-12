@@ -1,0 +1,450 @@
+[
+  {
+    "id": "n01",
+    "question": "What process does QuickLeave replace?",
+    "required_answer": "Requesting leave by email and tracking leave balances in a shared spreadsheet.",
+    "expected_answer": "QuickLeave replaces requesting leave by email and tracking balances in a shared spreadsheet.",
+    "must_include": [
+      "email",
+      "spreadsheet"
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "1. Overview",
+    "type": "factual",
+    "tier": "easy"
+  },
+  {
+    "id": "n02",
+    "question": "What target does QuickLeave set for the time it takes to approve a leave request?",
+    "required_answer": "Under 4 hours.",
+    "optional_details": "Down from an average of 2 days today.",
+    "expected_answer": "Reduce the approval time from an average of 2 days to under 4 hours.",
+    "must_include": [
+      "4 hours"
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "2. Goals and Non-Goals",
+    "type": "factual",
+    "tier": "easy"
+  },
+  {
+    "id": "n03",
+    "question": "If a public holiday falls inside someone's leave period, is it taken from their leave balance?",
+    "required_answer": "No. Weekends and public holidays inside the leave period are not counted against the balance (FR-08).",
+    "expected_answer": "No. FR-08: weekends and public holidays inside the leave period must not be counted against the balance.",
+    "expected_verdict": "no",
+    "must_include": [
+      [
+        "not be counted",
+        "not counted",
+        "not deducted",
+        "does not reduce"
+      ]
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "4. Functional Requirements (FR-08)",
+    "type": "factual",
+    "tier": "hard",
+    "notes": "Paraphrased question (taken from / balance); the answer is a No that the spec states directly."
+  },
+  {
+    "id": "n04",
+    "question": "Roughly how many tokens did each training batch of the Transformer contain?",
+    "required_answer": "About 25000 source tokens and 25000 target tokens.",
+    "expected_answer": "Each training batch contained approximately 25000 source tokens and 25000 target tokens.",
+    "must_include": [
+      "25000"
+    ],
+    "source_docs": [
+      "attention_is_all_you_need.pdf"
+    ],
+    "source_section": "5.1 Training Data and Batching",
+    "type": "factual",
+    "tier": "easy"
+  },
+  {
+    "id": "n05",
+    "question": "Did one training step of the big Transformer take more than twice as long as a step of the base model?",
+    "required_answer": "Yes. A big-model step took 1.0 seconds against about 0.4 seconds for the base model (2.5 times as long).",
+    "expected_answer": "Yes. Base-model steps took about 0.4 seconds and big-model steps 1.0 seconds, 2.5 times as long.",
+    "expected_verdict": "yes",
+    "must_include": [
+      "0.4",
+      "1.0"
+    ],
+    "source_docs": [
+      "attention_is_all_you_need.pdf"
+    ],
+    "source_section": "5.2 Hardware and Schedule",
+    "type": "factual",
+    "tier": "hard",
+    "notes": "Comparison: the model must compute 1.0 / 0.4 = 2.5 > 2."
+  },
+  {
+    "id": "n06",
+    "question": "What operating modes does DevPilot AI have?",
+    "required_answer": "Three: Ask, Plan and Agent.",
+    "optional_details": "The modes are enforced structurally at the API layer, so restricted modes never receive write or execute operations.",
+    "expected_answer": "Three operating modes, Ask, Plan and Agent, enforced structurally at the API layer.",
+    "must_include": [
+      "Ask",
+      "Plan",
+      "Agent"
+    ],
+    "source_docs": [
+      "Satwika_Agentic_AI_Engineer_Resume.pdf"
+    ],
+    "source_section": "Projects > DevPilot AI",
+    "type": "factual",
+    "tier": "easy"
+  },
+  {
+    "id": "n07",
+    "question": "In ReleaseForge AI, what raised GPT-4o-mini's precision from 78.6%, and what precision did it reach?",
+    "required_answer": "An independent second-pass verification call; precision reached 94%.",
+    "optional_details": "It also reached 100% critical-defect catch and 96% recall (3-run mean).",
+    "expected_answer": "An independent second-pass verification call lifted precision from 78.6% to 94% (with 100% critical-defect catch and 96% recall, 3-run mean).",
+    "must_include": [
+      "second-pass verification",
+      "94%"
+    ],
+    "source_docs": [
+      "Satwika_Agentic_AI_Engineer_Resume.pdf"
+    ],
+    "source_section": "Projects > ReleaseForge AI",
+    "type": "factual",
+    "tier": "hard"
+  },
+  {
+    "id": "n08",
+    "question": "Does the resume mention any experience with Terraform?",
+    "required_answer": "No. The resume does not mention Terraform.",
+    "optional_details": "Its infrastructure skills list Docker, Kubernetes, GitHub Actions CI/CD and Azure.",
+    "expected_answer": "No. The resume does not mention Terraform; its infrastructure skills are Docker, Kubernetes, GitHub Actions CI/CD and Azure.",
+    "expected_verdict": "no",
+    "must_include": [
+      [
+        "not mention",
+        "no mention",
+        "does not mention",
+        "doesn't mention",
+        "no evidence",
+        "does not show",
+        "not shown",
+        "does not state"
+      ]
+    ],
+    "source_docs": [
+      "Satwika_Agentic_AI_Engineer_Resume.pdf"
+    ],
+    "source_section": "Core Skills",
+    "type": "factual",
+    "tier": "hard",
+    "notes": "Negative-evidence question: the resume is the right document and does not mention it. 'No, not mentioned' with found=true is the correct reply; a bare 'not found' is a weaker answer."
+  },
+  {
+    "id": "n09",
+    "question": "What is the code for Maternity Leave, and how many days per year does it give?",
+    "required_answer": "ML, 182 days per year.",
+    "optional_details": "It cannot be carried forward and needs a document.",
+    "expected_answer": "Maternity Leave has the code ML and gives 182 days per year.",
+    "must_include": [
+      "ML",
+      "182"
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "5. Leave Policy",
+    "type": "table",
+    "tier": "easy"
+  },
+  {
+    "id": "n10",
+    "question": "Can all three QuickLeave roles approve leave requests?",
+    "required_answer": "No. Managers and HR Admins can approve or reject requests; Employees cannot.",
+    "expected_answer": "No. Only Managers (for their team) and HR Admins can approve or reject requests; an Employee can apply, cancel own pending requests and view own balance.",
+    "expected_verdict": "no",
+    "must_include": [
+      "Manager",
+      "HR Admin",
+      "Employee"
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "3. Users and Roles; 7. API Endpoints",
+    "type": "table",
+    "tier": "hard",
+    "notes": "Comparison over every row of the roles table ('all')."
+  },
+  {
+    "id": "n11",
+    "question": "Did the 4-layer Transformer beat every WSJ-only discriminative parser listed in Table 4?",
+    "required_answer": "No. It scored 91.3 F1, below Dyer et al. (2016) at 91.7.",
+    "optional_details": "It beat Vinyals & Kaiser (88.3), Petrov et al. (90.4) and Zhu et al. (90.4).",
+    "expected_answer": "No. The 4-layer Transformer (WSJ only) got 91.3 F1, higher than 88.3 and 90.4 but lower than Dyer et al. (2016) at 91.7.",
+    "expected_verdict": "no",
+    "must_include": [
+      "91.3",
+      "91.7"
+    ],
+    "source_docs": [
+      "attention_is_all_you_need.pdf"
+    ],
+    "source_section": "6.3 English Constituency Parsing (Table 4)",
+    "type": "table",
+    "tier": "hard",
+    "notes": "Comparison ('every'): one row beats the Transformer."
+  },
+  {
+    "id": "n12",
+    "question": "Which non-Transformer model in Table 2 has the highest English-to-French BLEU score, and what is it?",
+    "required_answer": "ConvS2S Ensemble, with 41.29 BLEU.",
+    "expected_answer": "The ConvS2S Ensemble, at 41.29 BLEU on English-to-French.",
+    "must_include": [
+      "ConvS2S",
+      "41.29"
+    ],
+    "source_docs": [
+      "attention_is_all_you_need.pdf"
+    ],
+    "source_section": "6.1 Machine Translation (Table 2)",
+    "type": "table",
+    "tier": "hard",
+    "notes": "Max over a table column, excluding the Transformer rows (41.8 big, 38.1 base)."
+  },
+  {
+    "id": "n13",
+    "question": "What can an HR Admin do in QuickLeave that a Manager cannot?",
+    "required_answer": "Edit leave types, adjust any balance, upload the yearly public holiday CSV, and cancel approved requests.",
+    "optional_details": "Unanswered requests are escalated to the HR Admin after 72 hours (FR-06).",
+    "expected_answer": "An HR Admin can edit leave types and adjust any balance (roles table), upload the yearly public holiday list as a CSV (FR-09, POST /api/v1/holidays/upload), and cancel approved requests (FR-07).",
+    "must_include": [
+      "edit leave types",
+      "adjust any balance",
+      "CSV",
+      [
+        "cancelled by an HR Admin",
+        "cancel approved"
+      ]
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "3. Users and Roles; 4. Functional Requirements (FR-07, FR-09); 7. API Endpoints",
+    "type": "multi_section",
+    "tier": "hard"
+  },
+  {
+    "id": "n14",
+    "question": "What must a rejection include, and which endpoint rejects a request?",
+    "required_answer": "A comment; PATCH /api/v1/leave-requests/{id}/reject.",
+    "optional_details": "Managers and HR Admins may call it.",
+    "expected_answer": "A rejection must include a comment (FR-05). It is done with PATCH /api/v1/leave-requests/{id}/reject, by a Manager or HR Admin.",
+    "must_include": [
+      "comment",
+      "/api/v1/leave-requests/{id}/reject"
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "4. Functional Requirements (FR-05); 7. API Endpoints",
+    "type": "multi_section",
+    "tier": "easy"
+  },
+  {
+    "id": "n15",
+    "question": "How many attention heads does the base Transformer use, and what happened to quality with a single head or with too many heads?",
+    "required_answer": "8 heads. Single-head attention was 0.9 BLEU worse than the best setting, and quality also dropped off with too many heads.",
+    "expected_answer": "The base model uses h = 8 heads. In Table 3 rows (A), single-head attention is 0.9 BLEU worse than the best setting, and quality also drops off with too many heads.",
+    "must_include": [
+      "0.9",
+      "too many heads"
+    ],
+    "source_docs": [
+      "attention_is_all_you_need.pdf"
+    ],
+    "source_section": "3.2.2 Multi-Head Attention; 6.2 Model Variations",
+    "type": "multi_section",
+    "tier": "hard"
+  },
+  {
+    "id": "n16",
+    "question": "Which of the candidate's projects use Ollama?",
+    "required_answer": "IntelliFusion and DevPilot AI.",
+    "optional_details": "IntelliFusion benchmarked a self-hosted Ollama model (Qwen2.5, LLaVA) against GPT-4o-mini; DevPilot AI serves its fine-tuned model locally through Ollama.",
+    "expected_answer": "IntelliFusion (a self-hosted Ollama model benchmarked against GPT-4o-mini) and DevPilot AI (local serving of the fine-tuned model through Ollama).",
+    "must_include": [
+      "IntelliFusion",
+      "DevPilot"
+    ],
+    "source_docs": [
+      "Satwika_Agentic_AI_Engineer_Resume.pdf"
+    ],
+    "source_section": "Projects > IntelliFusion; Projects > DevPilot AI",
+    "type": "multi_section",
+    "tier": "easy"
+  },
+  {
+    "id": "n17",
+    "question": "What does error code QL-1005 mean, and which HTTP status does it return?",
+    "required_answer": "403: the user is not allowed to perform this action.",
+    "expected_answer": "QL-1005 returns HTTP 403 and means the user is not allowed to perform this action.",
+    "must_include": [
+      "403",
+      "not allowed"
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "8. Error Codes",
+    "type": "exact_term",
+    "tier": "easy"
+  },
+  {
+    "id": "n18",
+    "question": "What is the document ID of the QuickLeave specification?",
+    "required_answer": "QL-SPEC-001.",
+    "expected_answer": "QL-SPEC-001.",
+    "must_include": [
+      "QL-SPEC-001"
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "Document header",
+    "type": "exact_term",
+    "tier": "easy"
+  },
+  {
+    "id": "n19",
+    "question": "How many checkpoints were averaged for the big Transformer models?",
+    "required_answer": "The last 20 checkpoints.",
+    "optional_details": "The base models averaged the last 5 checkpoints, written at 10-minute intervals.",
+    "expected_answer": "The last 20 checkpoints (the base models averaged the last 5).",
+    "must_include": [
+      [
+        "last 20 checkpoints",
+        "20 checkpoints"
+      ]
+    ],
+    "source_docs": [
+      "attention_is_all_you_need.pdf"
+    ],
+    "source_section": "6.1 Machine Translation",
+    "type": "exact_term",
+    "tier": "hard",
+    "notes": "Base (5) and big (20) sit in neighbouring sentences: a fact-attribution trap."
+  },
+  {
+    "id": "n20",
+    "question": "QuickLeave pages must load in under 2 seconds at the 95th percentile (NFR-01). Has the candidate measured p95 latency in a project?",
+    "required_answer": "Yes. In DevPilot AI the candidate measured p95 latency (8.99s for the fine-tuned model vs 7.26s for the base model).",
+    "optional_details": "Median latency was 2.86s vs 3.28s.",
+    "expected_answer": "Yes. NFR-01 requires p95 page loads under 2 seconds; in DevPilot AI the candidate measured median latency 2.86s vs 3.28s and p95 8.99s vs 7.26s.",
+    "expected_verdict": "yes",
+    "must_include": [
+      "p95",
+      "DevPilot"
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf",
+      "Satwika_Agentic_AI_Engineer_Resume.pdf"
+    ],
+    "source_section": "6. Non-Functional Requirements (NFR-01); Projects > DevPilot AI",
+    "type": "cross_doc",
+    "tier": "easy"
+  },
+  {
+    "id": "n21",
+    "question": "QuickLeave must meet WCAG 2.1 level AA (NFR-05). Does the resume mention accessibility or WCAG experience?",
+    "required_answer": "No. The resume does not mention accessibility or WCAG.",
+    "optional_details": "NFR-05 requires the user interface to meet WCAG 2.1 level AA.",
+    "expected_answer": "No. The spec requires WCAG 2.1 level AA (NFR-05), but the resume does not mention accessibility or WCAG experience.",
+    "expected_verdict": "no",
+    "must_include": [
+      [
+        "not mention",
+        "no mention",
+        "does not mention",
+        "doesn't mention",
+        "no evidence",
+        "does not show",
+        "not shown",
+        "does not state"
+      ]
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "6. Non-Functional Requirements (NFR-05)",
+    "type": "cross_doc",
+    "tier": "hard",
+    "notes": "Negative-evidence question: 'No, not mentioned' with found=true is correct; 'Yes' is a hallucination."
+  },
+  {
+    "id": "n22",
+    "question": "QuickLeave plans iOS and Android apps for a later release. Does the resume show any mobile app development?",
+    "required_answer": "No. The resume does not mention mobile app development.",
+    "optional_details": "Mobile apps (iOS and Android) are out of scope for QuickLeave v1. The candidate's web work includes the Meeting Room Web App.",
+    "expected_answer": "No. Mobile apps are planned for a later QuickLeave release, and the resume does not mention iOS, Android or mobile app development.",
+    "expected_verdict": "no",
+    "must_include": [
+      [
+        "not mention",
+        "no mention",
+        "does not mention",
+        "doesn't mention",
+        "no evidence",
+        "does not show",
+        "not shown",
+        "does not state"
+      ]
+    ],
+    "source_docs": [
+      "quickleave_spec_v1.2.pdf"
+    ],
+    "source_section": "9. Out of Scope for v1",
+    "type": "cross_doc",
+    "tier": "hard",
+    "notes": "Negative-evidence question. Trap: the Meeting Room Web App is a web app, not a mobile app."
+  },
+  {
+    "id": "n23",
+    "question": "What is the budget for building QuickLeave?",
+    "expected_answer": "ABSTAIN: the spec gives no budget.",
+    "must_include": [],
+    "source_docs": [],
+    "source_section": null,
+    "type": "unanswerable",
+    "tier": "easy"
+  },
+  {
+    "id": "n24",
+    "question": "Who is the candidate's manager at Cprime?",
+    "expected_answer": "ABSTAIN: the resume does not name a manager.",
+    "must_include": [],
+    "source_docs": [],
+    "source_section": null,
+    "type": "unanswerable",
+    "tier": "easy"
+  },
+  {
+    "id": "n25",
+    "question": "What learning rate was finally used for the QLoRA fine-tuning in DevPilot AI?",
+    "expected_answer": "ABSTAIN: the resume says learning rate was tuned (with rank and epochs) but gives no value.",
+    "must_include": [],
+    "source_docs": [],
+    "source_section": null,
+    "type": "unanswerable",
+    "tier": "hard",
+    "notes": "Tempting: the resume mentions hyperparameter tuning over learning rate, without a value."
+  }
+]

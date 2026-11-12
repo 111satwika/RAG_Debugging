@@ -1,0 +1,13 @@
+pymupdf
+pymupdf4llm
+transformers
+sentence-transformers
+chromadb
+tiktoken
+requests
+openai
+python-dotenv
+fastapi
+uvicorn
+pytest
+httpx
